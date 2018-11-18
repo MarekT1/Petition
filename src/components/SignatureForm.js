@@ -1,9 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setFirstname } from '../actions/names'
+import { setUpdatedState } from '../actions/names'
+import axios from 'axios'
+const NUMBER_A_MAX = 50;
+const NUMBER_B_MAX = 10;
+const NUMBER_AB_MIN = 1;
 
-
-export class DashboardPage extends React.Component { 
+export class SignatureForm extends React.Component { 
     constructor(props) {
         super(props)
 
@@ -11,16 +14,31 @@ export class DashboardPage extends React.Component {
             firstName: '',
             lastName: '',
             profession: '',
-            email: 'email',
+            email: '',
+            captcha: '',
+            captchaAnswer: '',
             error: '',
-            agreeConditionsIsChecked: false
+            agreeGDPRChecked: false,
+            agreeSubscribeChecked: false
         }
+    }
+    componentDidMount = () => {
+        const numberA = Math.floor(Math.random()*(NUMBER_A_MAX - NUMBER_AB_MIN) + NUMBER_AB_MIN)
+        const numberB = Math.floor(Math.random()*(NUMBER_B_MAX - NUMBER_AB_MIN) + NUMBER_AB_MIN)
+        this.setState({
+            captcha: `(${numberA} + ${numberB} = zadajte výsledok)`,
+        });
     }
     toggleChange = () => {
         this.setState({
-            agreeConditionsIsChecked: !this.state.agreeConditionsIsChecked,
+            agreeGDPRChecked: !this.state.agreeGDPRChecked,
         });
-      }    
+    }    
+    toggleSubscribeChange = () => {
+        this.setState({
+            agreeSubscribeChecked: !this.state.agreeSubscribeChecked,
+        });
+    }
     onFirstNameChange = (e) => {
         const firstName = e.target.value
         this.setState(() => ({firstName}))
@@ -36,7 +54,29 @@ export class DashboardPage extends React.Component {
     onEmailChange = (e) => {
         const email = e.target.value
         this.setState(() => ({email}))
-    }       
+    }
+    onCaptchaChange = (e) => {
+        const captchaAnswer = e.target.value
+        this.setState(() => ({captchaAnswer}))
+    }
+    onSubmitClick = () => {
+        axios.post(`https://www.9komentarov.sk/_api/ajax-register.php`, { 
+            firstName: this.state.firstName, 
+            lastName: this.state.lastName, 
+            profession: this.state.profession, 
+            email: this.state.email, 
+            agreeGDPRChecked: this.state.agreeGDPRChecked ? 1 : 0,
+            agreeSubscribeChecked: this.state.agreeSubscribeChecked ? 1 : 0,
+            captcha: this.state.captcha,
+            captchaAnswer: this.state.captchaAnswer,
+        })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+            // initiate state change
+            this.props.stateHandler();
+        })        
+    }
     render() {
         return (
             <div>
@@ -54,7 +94,6 @@ export class DashboardPage extends React.Component {
                             <input 
                                 type="text"
                                 placeholder="Priezvisko"
-                                autoFocus
                                 className="text-input"
                                 value={this.state.lastName}
                                 onChange={this.onLastNameChange}
@@ -62,7 +101,6 @@ export class DashboardPage extends React.Component {
                             <input 
                             type="text"
                             placeholder="Profesia"
-                            autoFocus
                             className="text-input"
                             value={this.state.profession}
                             onChange={this.onProfessionChange}
@@ -70,21 +108,34 @@ export class DashboardPage extends React.Component {
                             <input 
                                 type="text"
                                 placeholder="email"
-                                autoFocus
                                 className="text-input"
                                 value={this.state.email}
                                 onChange={this.onEmailChange}
                             />
-                        </div>
+                            <input 
+                                type="text"
+                                placeholder={this.state.captcha}
+                                className="text-input"
+                                value={this.state.captchaAnswer}
+                                onChange={this.onCaptchaChange}
+                            />
+                    </div>
                         <label>
                             <input type="checkbox"
-                            checked={this.state.agreeConditionsIsChecked}
+                            checked={this.state.agreeGDPRChecked}
                             onChange={this.toggleChange}
                             />
                         Suhlasim so spracovanim mojich osobnych udajov
                        </label>                        
-                        <div>
-                            <button className="button">Podpisat</button>
+                       <label>
+                       <input type="checkbox"
+                            checked={this.state.agreeSubscribeChecked}
+                            onChange={this.toggleSubscribeChange}
+                            />
+                        Chcem dostavat aktualne informacie
+                        </label> 
+                       <div>
+                            <button className="button" onClick={this.onSubmitClick}>Podpisat</button>
                         </div>        
         
                     </div>
@@ -97,7 +148,7 @@ export class DashboardPage extends React.Component {
 const mapStateToProps = (state) => ({ names: state.names })
 
 const mapDispatchToProps = (dispatch) => ({
-    setFirstname: (text) => dispatch(setFirstname(text)),
+    setUpdatedState: () => dispatch(setUpdatedState()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)
+export default connect(mapStateToProps, mapDispatchToProps)(SignatureForm)

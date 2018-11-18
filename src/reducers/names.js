@@ -1,16 +1,12 @@
 // Filters reducer
+const nameReducerDefaultState = []
 
-const nameReducerDefaultState = {
-    firstName: 'meno',
-    lastName: 'priezvisko', 
-    email: 'email'
-}
 const nameReducer = (state = nameReducerDefaultState, action) => {
     switch (action.type) {
-        case 'SET_FIRST_NAME_FILTER':
+        case 'SET_UPDATE_STATE':
             return {
                 ...state,
-                text: action.text
+                state: action.text
             }
         default:
             return state
