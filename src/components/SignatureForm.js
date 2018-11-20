@@ -6,33 +6,65 @@ const NUMBER_A_MAX = 50;
 const NUMBER_B_MAX = 10;
 const NUMBER_AB_MIN = 1;
 
-export class SignatureForm extends React.Component { 
-    constructor(props) {
-        super(props)
-
+export class SignatureForm extends React.Component {
+    constructor(props, ...args) {
+        super(props, ...args);
         this.state = {
             firstName: '',
             lastName: '',
             profession: '',
             email: '',
+            errors: {
+                firstName: {
+                    blurred: false,
+                    valid: true
+                },
+                lastName: {
+                    blurred: false,
+                    valid: true
+                },
+                email: {
+                    blurred: false,
+                    valid: true
+                },
+                agreeGDPRChecked: {
+                    blurred: false,
+                    valid: true
+                },
+                captcha: {
+                    blurred: false,
+                    valid: true
+                }                
+            },
             captcha: '',
             captchaAnswer: '',
-            error: '',
+            captchaCorrectAnswer: '',
             agreeGDPRChecked: false,
-            agreeSubscribeChecked: false
-        }
-    }
-    componentDidMount = () => {
+            agreeSubscribeChecked: false,
+            submitButtonDisable: true,
+        };
+      }
+      componentDidMount = () => {
         const numberA = Math.floor(Math.random()*(NUMBER_A_MAX - NUMBER_AB_MIN) + NUMBER_AB_MIN)
         const numberB = Math.floor(Math.random()*(NUMBER_B_MAX - NUMBER_AB_MIN) + NUMBER_AB_MIN)
         this.setState({
             captcha: `(${numberA} + ${numberB} = zadajte výsledok)`,
         });
+        this.setState({
+            captchaCorrectAnswer: `${numberA + numberB}`,
+        });
     }
-    toggleChange = () => {
+    toggleGDPRChange = () => {
         this.setState({
             agreeGDPRChecked: !this.state.agreeGDPRChecked,
         });
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.agreeGDPRChecked.blurred = true;
+            return {
+                errors: newStateErrors
+                }
+        }) 
     }    
     toggleSubscribeChange = () => {
         this.setState({
@@ -42,11 +74,45 @@ export class SignatureForm extends React.Component {
     onFirstNameChange = (e) => {
         const firstName = e.target.value
         this.setState(() => ({firstName}))
-    }    
+
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.firstName.valid = !(firstName < 1);
+            return {
+                errors: newStateErrors
+                }
+        })
+    }
+    onFirstNameBlur = (e) => {
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.firstName.blurred = true;
+            return {
+                errors: newStateErrors
+                }
+        })        
+    }         
     onLastNameChange = (e) => {
         const lastName = e.target.value
         this.setState(() => ({lastName}))
+
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.lastName.valid = !(lastName < 1);
+            return {
+                errors: newStateErrors
+                }
+        })
     }     
+    onLastNameBlur = (e) => {
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.lastName.blurred = true;
+            return {
+                errors: newStateErrors
+                }
+        })        
+    }      
     onProfessionChange = (e) => {
         const profession = e.target.value
         this.setState(() => ({profession}))
@@ -54,10 +120,45 @@ export class SignatureForm extends React.Component {
     onEmailChange = (e) => {
         const email = e.target.value
         this.setState(() => ({email}))
-    }
+        const expression = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.email.valid = expression.test(String(email).toLowerCase());
+            return {
+                errors: newStateErrors
+                }
+        })
+    }     
+    onEmailBlur = (e) => {
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.email.blurred = true;
+            return {
+                errors: newStateErrors
+                }
+        })        
+    }     
     onCaptchaChange = (e) => {
         const captchaAnswer = e.target.value
         this.setState(() => ({captchaAnswer}))
+        
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.captcha.valid = state.captchaCorrectAnswer === captchaAnswer;
+            return {
+                errors: newStateErrors
+                }
+        })        
+    }
+    onCaptchaBlur = () => {
+        this.setState((state) => {
+            let newStateErrors = state.errors
+            newStateErrors.captcha.blurred = true;
+            return {
+                errors: newStateErrors
+                }
+        })         
     }
     onSubmitClick = () => {
         axios.post(`https://www.9komentarov.sk/_api/ajax-register.php`, { 
@@ -71,8 +172,7 @@ export class SignatureForm extends React.Component {
             captchaAnswer: this.state.captchaAnswer,
         })
         .then(res => {
-          console.log(res);
-          console.log(res.data);
+            console.log("called POST with=", res.data);
             // initiate state change
             this.props.stateHandler();
         })        
@@ -87,68 +187,107 @@ export class SignatureForm extends React.Component {
                                 type="text"
                                 placeholder="Meno"
                                 autoFocus
-                                className="text-input"
+                                className = {
+                                    !this.state.errors.firstName.blurred  ||
+                                    this.state.errors.firstName.valid 
+                                     ? "text-input": "text-input-error"
+                                }
                                 value={this.state.firstName}
+                                onBlur={this.onFirstNameBlur}
                                 onChange={this.onFirstNameChange}
                             />
                             <input 
                                 type="text"
                                 placeholder="Priezvisko"
-                                className="text-input"
+                                className = {
+                                    !this.state.errors.lastName.blurred  ||
+                                    this.state.errors.lastName.valid 
+                                     ? "text-input": "text-input-error"
+                                }
                                 value={this.state.lastName}
+                                onBlur={this.onLastNameBlur}
                                 onChange={this.onLastNameChange}
                             />
                             <input 
-                            type="text"
-                            placeholder="Profesia"
-                            className="text-input"
-                            value={this.state.profession}
-                            onChange={this.onProfessionChange}
-                        />
+                                type="text"
+                                placeholder="Profesia"
+                                className="text-input"
+                                value={this.state.profession}
+                                onChange={this.onProfessionChange}
+                            />
                             <input 
                                 type="text"
                                 placeholder="email"
-                                className="text-input"
+                                className = {
+                                    !this.state.errors.email.blurred  ||
+                                    this.state.errors.email.valid 
+                                     ? "text-input": "text-input-error"
+                                }
                                 value={this.state.email}
+                                onBlur={this.onEmailBlur}
                                 onChange={this.onEmailChange}
                             />
                             <input 
                                 type="text"
                                 placeholder={this.state.captcha}
-                                className="text-input"
+                                className = {
+                                    !this.state.errors.captcha.blurred  ||
+                                    this.state.errors.captcha.valid 
+                                     ? "text-input": "text-input-error"
+                                }
                                 value={this.state.captchaAnswer}
+                                onBlur={this.onCaptchaBlur}
                                 onChange={this.onCaptchaChange}
                             />
                     </div>
-                        <label>
+                        <label
+                            className = {
+                                !this.state.errors.agreeGDPRChecked.blurred  ||
+                                this.state.agreeGDPRChecked 
+                                ? "label-input": "label-input-error"
+                            }                      
+                        >
                             <input type="checkbox"
                             checked={this.state.agreeGDPRChecked}
-                            onChange={this.toggleChange}
+                            onChange={this.toggleGDPRChange}
                             />
-                        Suhlasim so spracovanim mojich osobnych udajov
+                        Suhlas
                        </label>                        
                        <label>
                        <input type="checkbox"
                             checked={this.state.agreeSubscribeChecked}
                             onChange={this.toggleSubscribeChange}
                             />
-                        Chcem dostavat aktualne informacie
+                        Chcem
                         </label> 
                        <div>
-                            <button className="button" onClick={this.onSubmitClick}>Podpisat</button>
+                            <button 
+                                className="button" 
+                                disabled={!(
+                                    this.state.errors.firstName.blurred === true &&
+                                    this.state.errors.firstName.valid === true &&
+                                    this.state.errors.lastName.blurred === true &&
+                                    this.state.errors.lastName.valid === true &&
+                                    this.state.errors.email.blurred === true &&
+                                    this.state.errors.email.valid === true &&
+                                    this.state.errors.agreeGDPRChecked.blurred === true &&
+                                    this.state.agreeGDPRChecked === true &&                                   
+                                    this.state.errors.captcha.blurred === true &&
+                                    this.state.errors.captcha.valid === true
+                                )} 
+                                onClick={this.onSubmitClick}
+                            >
+                                    Button
+                            </button>
                         </div>        
         
                     </div>
                 </div>
             </div>
-        )
+
+        );
     }
 }
 
-const mapStateToProps = (state) => ({ names: state.names })
 
-const mapDispatchToProps = (dispatch) => ({
-    setUpdatedState: () => dispatch(setUpdatedState()),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignatureForm)
+export default SignatureForm

@@ -13,22 +13,19 @@ export default class MainPage extends React.Component {
             signatures: []
         }
     }
-    componentDidMount = () => {
+    getDataFromExternalAPI = () => {
         axios.post(`https://www.9komentarov.sk/_api/get.php`)
         .then(res => {
             console.log("retrieved users=", res.data);
-            debugger
-            this.state.signatures = res.data
-        })     
-    }    
-    stateHandler = (signatures) => {
-        axios.post(`https://lsapp.dev/api/get.php`)
-        .then(res => {
-            console.log("retrieved users=", res.data);
-            debugger
             const signatures = res.data
             this.setState({signatures})
-        })         
+        })     
+    }
+    componentDidMount = () => {
+        this.getDataFromExternalAPI()
+    }    
+    stateHandler = (signatures) => {
+        this.getDataFromExternalAPI()
     }
     render() {
         return (
