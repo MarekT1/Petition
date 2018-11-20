@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setUpdatedState } from '../actions/names'
 import axios from 'axios'
+import ToolTip from 'react-portal-tooltip'
+
 const NUMBER_A_MAX = 50;
 const NUMBER_B_MAX = 10;
 const NUMBER_AB_MIN = 1;
@@ -17,23 +19,23 @@ export class SignatureForm extends React.Component {
             errors: {
                 firstName: {
                     blurred: false,
-                    valid: true
+                    valid: false
                 },
                 lastName: {
                     blurred: false,
-                    valid: true
+                    valid: false
                 },
                 email: {
                     blurred: false,
-                    valid: true
+                    valid: false
                 },
                 agreeGDPRChecked: {
                     blurred: false,
-                    valid: true
+                    valid: false
                 },
                 captcha: {
                     blurred: false,
-                    valid: true
+                    valid: false
                 }                
             },
             captcha: '',
@@ -42,6 +44,9 @@ export class SignatureForm extends React.Component {
             agreeGDPRChecked: false,
             agreeSubscribeChecked: false,
             submitButtonDisable: true,
+            stateMessage: '',
+            stateStatus: false,
+            isTooltipActive: false
         };
       }
       componentDidMount = () => {
@@ -161,21 +166,70 @@ export class SignatureForm extends React.Component {
         })         
     }
     onSubmitClick = () => {
-        axios.post(`https://www.9komentarov.sk/_api/ajax-register.php`, { 
-            firstName: this.state.firstName, 
-            lastName: this.state.lastName, 
-            profession: this.state.profession, 
-            email: this.state.email, 
-            agreeGDPRChecked: this.state.agreeGDPRChecked ? 1 : 0,
-            agreeSubscribeChecked: this.state.agreeSubscribeChecked ? 1 : 0,
-            captcha: this.state.captcha,
-            captchaAnswer: this.state.captchaAnswer,
-        })
-        .then(res => {
-            console.log("called POST with=", res.data);
-            // initiate state change
-            this.props.stateHandler();
-        })        
+        if ( this.state.errors.firstName.blurred === true &&
+            this.state.errors.firstName.valid === true &&
+            this.state.errors.lastName.blurred === true &&
+            this.state.errors.lastName.valid === true &&
+            this.state.errors.email.blurred === true &&
+            this.state.errors.email.valid === true &&
+            this.state.errors.agreeGDPRChecked.blurred === true &&
+            this.state.agreeGDPRChecked === true &&                                   
+            this.state.errors.captcha.blurred === true &&
+            this.state.errors.captcha.valid === true
+        ) { 
+            axios.post(`https://www.9komentarov.sk/_api/ajax-register.php`, { 
+                firstName: this.state.firstName, 
+                lastName: this.state.lastName, 
+                profession: this.state.profession, 
+                email: this.state.email, 
+                agreeGDPRChecked: this.state.agreeGDPRChecked ? 1 : 0,
+                agreeSubscribeChecked: this.state.agreeSubscribeChecked ? 1 : 0,
+                captcha: this.state.captcha,
+                captchaAnswer: this.state.captchaAnswer,
+            })
+            .then(res => {
+                console.log("called POST with=", res.data);
+                // initiate state change
+                this.props.stateHandler();
+
+                this.setState((state) => {
+                    return {
+                        ...state,
+                        stateMessage: 'MESSAGE:' + res.data.message,
+                        stateStatus: res.data.status,
+                        isTooltipActive: true
+                        }
+                })
+
+                setTimeout(() => {
+                    this.setState((state) => {
+                        return {
+                            ...state,
+                            isTooltipActive: false
+                            }
+                    })
+                }, 3000)
+
+
+            })              
+        } else {
+            // make the form "dirty", so that the errors appear 
+            this.setState((state) => {
+                let newStateErrors = state.errors
+                newStateErrors.firstName.blurred = true;
+                newStateErrors.lastName.blurred = true;
+                newStateErrors.email.blurred = true;
+                newStateErrors.captcha.blurred = true;
+                newStateErrors.agreeGDPRChecked.blurred = true;
+                return {
+                    errors: newStateErrors
+                    }
+            }) 
+        }
+
+
+
+      
     }
     render() {
         return (
@@ -252,33 +306,28 @@ export class SignatureForm extends React.Component {
                             onChange={this.toggleGDPRChange}
                             />
                         Suhlas
-                       </label>                        
-                       <label>
-                       <input type="checkbox"
+                        </label>                        
+                        <label>
+                        <input type="checkbox"
                             checked={this.state.agreeSubscribeChecked}
                             onChange={this.toggleSubscribeChange}
                             />
                         Chcem
                         </label> 
-                       <div>
+                        <div>
                             <button 
+                                id="saveSignature"
                                 className="button" 
-                                disabled={!(
-                                    this.state.errors.firstName.blurred === true &&
-                                    this.state.errors.firstName.valid === true &&
-                                    this.state.errors.lastName.blurred === true &&
-                                    this.state.errors.lastName.valid === true &&
-                                    this.state.errors.email.blurred === true &&
-                                    this.state.errors.email.valid === true &&
-                                    this.state.errors.agreeGDPRChecked.blurred === true &&
-                                    this.state.agreeGDPRChecked === true &&                                   
-                                    this.state.errors.captcha.blurred === true &&
-                                    this.state.errors.captcha.valid === true
-                                )} 
                                 onClick={this.onSubmitClick}
                             >
-                                    Button
+                                Button
                             </button>
+                            <ToolTip active={this.state.isTooltipActive} position="right" parent="#saveSignature">
+                                <div className={this.state.stateStatus === false ? "signature-message-err":"signature-message-ok"}>
+                                    <p>{this.state.stateStatus}</p>
+                                    <p>{this.state.stateMessage}</p>
+                                </div>
+                            </ToolTip>                            
                         </div>        
         
                     </div>
