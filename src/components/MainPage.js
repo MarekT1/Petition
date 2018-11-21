@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
-import Header from '../components/Header'
-import { SignatureList } from '../components/SignatureList'
-import { SignatureForm } from '../components/SignatureForm'
+import Header from './Header'
+import { SignatureList } from './SignatureList'
+import { SignatureForm } from './SignatureForm'
 import axios from 'axios'
 
 export default class MainPage extends React.Component {
@@ -14,7 +14,7 @@ export default class MainPage extends React.Component {
         }
     }
     getDataFromExternalAPI = () => {
-        axios.post(`https://www.9komentarov.sk/_api/get.php`)
+        axios.post(`https://www.9komentarov.sk/_sy/api/get.php`)
         .then(res => {
             console.log("retrieved users=", res.data);
             const signatures = res.data

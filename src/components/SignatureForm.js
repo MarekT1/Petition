@@ -177,7 +177,7 @@ export class SignatureForm extends React.Component {
             this.state.errors.captcha.blurred === true &&
             this.state.errors.captcha.valid === true
         ) { 
-            axios.post(`https://www.9komentarov.sk/_api/ajax-register.php`, { 
+            axios.post(`https://www.9komentarov.sk/_sy/api/put.php`, { 
                 firstName: this.state.firstName, 
                 lastName: this.state.lastName, 
                 profession: this.state.profession, 
@@ -195,7 +195,7 @@ export class SignatureForm extends React.Component {
                 this.setState((state) => {
                     return {
                         ...state,
-                        stateMessage: 'MESSAGE:' + res.data.message,
+                        stateMessage: res.data.message,
                         stateStatus: res.data.status,
                         isTooltipActive: true
                         }
@@ -305,7 +305,7 @@ export class SignatureForm extends React.Component {
                             checked={this.state.agreeGDPRChecked}
                             onChange={this.toggleGDPRChange}
                             />
-                        Suhlas
+                        Suhlas aaa
                         </label>                        
                         <label>
                         <input type="checkbox"
