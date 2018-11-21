@@ -177,7 +177,7 @@ export class SignatureForm extends React.Component {
             this.state.errors.captcha.blurred === true &&
             this.state.errors.captcha.valid === true
         ) { 
-            axios.post(`https://www.9komentarov.sk/_sy/api/put.php`, { 
+            axios.post(`https://www.9komentarov.sk/list/api/put.php`, { 
                 firstName: this.state.firstName, 
                 lastName: this.state.lastName, 
                 profession: this.state.profession, 
@@ -332,7 +332,7 @@ export class SignatureForm extends React.Component {
                                         checked={this.state.agreeGDPRChecked}
                                         onChange={this.toggleGDPRChange}
                                     />
-                                    Suhlas aaa
+                                    Súhlasím so Zásadami ochrany osobných údajov. 
                                 </label>
                             </div>
 
@@ -342,7 +342,7 @@ export class SignatureForm extends React.Component {
                                         checked={this.state.agreeSubscribeChecked}
                                         onChange={this.toggleSubscribeChange}
                                     />
-                                        Chcem asdfj asdf lsdfj askdf asldfasldk fskd fsdkflsdjf
+                                        Chcem byť informovaný o ďalšom postupe ohľadom tohto listu.
                                 </label> 
                             </div>
                             <p className="text-center">
@@ -351,7 +351,7 @@ export class SignatureForm extends React.Component {
                                     className="btn btn-brand btn-cta" 
                                     onClick={this.onSubmitClick}
                                 >
-                                    Button
+                                    Podpísať otvorený list
                                 </button>
                             </p>
                             <ToolTip active={this.state.isTooltipActive} position="right" parent="#saveSignature">

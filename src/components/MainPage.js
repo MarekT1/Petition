@@ -14,7 +14,7 @@ export default class MainPage extends React.Component {
         }
     }
     getDataFromExternalAPI = () => {
-        axios.post(`https://www.9komentarov.sk/_sy/api/get.php`)
+        axios.post(`https://www.9komentarov.sk/list/api/get.php`)
         .then(res => {
             console.log("retrieved users=", res.data);
             const signatures = res.data
@@ -32,14 +32,14 @@ export default class MainPage extends React.Component {
             <div>
                 <div className="light-shade">
                     <div className="container">
-                        <Header type="petition" heading="Nadpis 1"/>
+                        <Header type="petition" heading="Podpísať otvorený list"/>
                         <SignatureForm stateHandler={this.stateHandler}/>
                     </div>
                 </div>
                 <div className="signature-list-table-area">
                     <div className="container">            
                         <Header type="list-of-signatures" heading="Zoznam všetkých podpisov"/>
-                        {false && <SignatureList signatures={this.state.signatures}/>}
+                        <SignatureList signatures={this.state.signatures}/>
                     </div>
                 </div>
             </div>

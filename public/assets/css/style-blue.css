@@ -1033,6 +1033,9 @@ main.content {
   font-size: 1.4rem;
   line-height: 2.0999999999999996rem;
 }
+.label-input-error {
+  color: #e74c3c;
+}
 .form-group .form-control::-moz-placeholder {
   line-height: 1.6rem;
 }
