@@ -1,0 +1,69 @@
+footer#footer {
+  background-color: @brand-dark;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  color: @white;
+  p {
+    .font-size(14);
+    color: @white;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    margin-top: 0px;
+    img {
+      filter: brightness(800%) ;
+    }
+  }
+  .stay_connected_title{
+    margin-top: 0px;
+  }
+
+  .subscribe-form {
+    .subscribe-form-action {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border: 1px solid @white;
+      border-radius: 25px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      .subscribe-input {
+        width: 75%;
+        margin: 0;
+        input {
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          outline: none;
+          padding-left: 25px;
+          color: @white;
+          &:hover, &:focus, &:active {
+            border: 0;
+            outline: none;
+            box-shadow: none;
+          }
+        }
+      }
+      .subscribe-btn {
+        width: 25%;
+        margin: 0;
+        background: #fff;
+        .btn {
+          background: @white;
+          font-size: 16px;
+          padding: 11px 30px;
+          width: 100%;
+          border-color: transparent;
+          color: @brand-dark;
+          &:hover, &:focus, &:active {
+            padding: 11px 30px;
+            .bg-rgba(@white, 0.8);
+            color: @brand-light;
+          }
+        }
+      }
+    }
+  }
+
+}

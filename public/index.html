@@ -1,17 +1,302 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+    <head>
+        <title>Otvoreny list</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- The above 3 meta tags *must* come first in the head -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Boilerplate react app</title>
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="/dist/styles.css" />
-</head>
+        <meta name="description" content="simple description for your site">
+<meta name="keywords" content="keyword1, keyword2">
+<meta name="author" content="Petition">
 
-<body>
-    <div id="app"></div>
-    <script src="/dist/bundle.js"></script>
-</body>
+<!-- twitter card starts from here, if you don't need remove this section -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@yourtwitterusername">
+<meta name="twitter:creator" content="@yourtwitterusername">
+<meta name="twitter:url" content="http://yourdomain.com">
+<meta name="twitter:title" content="Your home page title, max 140 char"> <!-- maximum 140 char -->
+<meta name="twitter:description" content="Your site description, maximum 140 char "> <!-- maximum 140 char -->
+<meta name="twitter:image" content="assets/img/twittercardimg/twittercard-144-144.png">  <!-- when you post this page url in twitter , this image will be shown -->
+<!-- twitter card ends here -->
+
+<!-- facebook open graph starts from here, if you don't need then delete open graph related  -->
+<meta property="og:title" content="Your home page title">
+<meta property="og:url" content="http://your domain here.com">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Your site name here">
+<!--meta property="fb:admins" content="" /-->  <!-- use this if you have  -->
+<meta property="og:type" content="website"> <!-- 'article' for single page  -->
+<meta property="og:image" content="assets/img/opengraph/fbphoto-476-476.png"> <!-- when you post this page url in facebook , this image will be shown -->
+<!-- facebook open graph ends here -->
+
+<!-- desktop bookmark -->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!-- icons & favicons -->
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">  <!-- this icon shows in browser toolbar -->
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"> <!-- this icon shows in browser toolbar -->
+<link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/img/favicon/manifest.json">
+
+        <!-- Dancing GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
+
+
+
+        <!--  FAVICON AND TOUCH ICONS -->
+<link rel="icon" type="image/png" href="assets/img/favicon/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
+
+<!-- BOOTSTRAP CSS -->
+<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+
+<!--Bootstrap material CSS-->
+<link rel="stylesheet" href="assets/vendor/bootstrap-material/css/bootstrap-material-design.min.css">
+<!--<link rel="stylesheet" href="assets/vendor/bootstrap-material/css/ripples.min.css" />-->
+
+<!-- FONT AWESOME CSS -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+
+
+<!-- MASTER  STYLESHEET  -->
+<link id="cbx-style" rel="stylesheet" href="assets/css/style-default.min.css" media="all">
+
+    </head>
+    <body>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+<!--    
+<header >
+    <div class="single-petition-header">
+        <div class="light-shade">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="h1 section-heading section-heading-white">Ukážme, že žijeme v krajine, kde si ľudia vážia slobodu, umenie a kultúru.</h2>
+                        <div class="progress-wrapper progress-wrapper-white">
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <main id="main">
+
+
+        <div class="single-petition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="meta-info">
+                            <div class="creatorinfo">
+                                <p class="small">
+                                    <b>Otvorený list za pozvanie unikátneho predstavenia Shen Yun na Slovensko.</b>
+                                </p>
+                                <p class="small">
+                                    Dňa: 19. Novembra 2018
+                                </p>
+                            </div>
+                            <div class="social text-right">
+                                <a href="#sign-this-petition" class="btn btn-brand btn-cta pull-right">Podpísať</a>
+                            </div>
+                        </div>
+                        <div class="petition-info">
+                            <p>Súbor Shen Yun prináša predstavenie, ktoré vypredáva sály po celom svete. Vystúpi každý rok vo viac ako 100 divadlách a rady na lístky a&nbsp;pridané predstavenia sú bežnou praxou.</p>
+                            <p>Shen Yun oživuje tradičnú čínsku polobožskú kultúru, ktorá bola komunistickým režimom takmer vyhladená. Prostredníctvom klasického čínskeho tanca a&nbsp;hudby prenáša publikum na cestu legiend, rozprávok a príbehov do rôznych kútov Číny. Prináša so sebou orchester, v ktorom harmonicky ladia klasické západné a čínske nástroje. Za tanečníkmi v nádherných kostýmoch sa nachádza&nbsp;digitálne pozadie, na ktoré sú premietané scény, čím rozširujú javisko a prenášajú divákov do iného času a&nbsp;priestoru.</p>
+                            <p><em>„Neobyčajne krásne. Bol to mimoriadny zážitok...“ --- Cate Blanchett, herečka, držiteľka Oscara</em></p>
+                            <p><em>„Je to nádherné představení, které ukazuje jednak špičkové umění hluboké čínské kultury, jednak duchovní rozměr a dává především naději.“ --- Daniel Herman, bývalý minister kultúry ČR</em></p>
+                            <p>Čínska ambasáda však všade vo svete vytvára nátlak na divadlá a&nbsp;kultúrne inštitúcie, vyhlasujúc, že predstavenie je „proti-čínske“ – čo vo svetle toho, že väčšina vystupujúcich sú etnickí Číňania a&nbsp;misiou Shen Yunu je oživenie 5000 rokov tradičnej čínskej civilizácie, vyznieva zvláštne.</p>
+                            <p>Treba si však uvedomiť, že presne tieto tradície sa Čínska komunistická strana (ČKS) pokúša posledných 100 rokov zničiť. Nepáči sa im tiež fakt, že vo vystúpení sú tance, ktoré ukazujú prenasledovanie Falun Gongu, ktoré sa deje v&nbsp;dnešnej Číne. Toto je v&nbsp;skutočnosti príbeh, ktorý je srdciam vystupujúcich v&nbsp;Shen Yune blízky a po zobrazení na javisku sa stal aj jedným z&nbsp;obľúbených príbehov divákov. Je to preto, že sú to dojemné príbehy viery, odvahy a&nbsp;nádeje zoči-voči prenasledovaniu. Toto je prenasledovanie, o&nbsp;ktorom ČKS predstiera, že ani neexistuje a&nbsp;Shen Yun ho ukazuje na javiskách po celom svete.</p>
+                            <p><strong>ČKS ako nepozvaný cenzor kultúry v&nbsp;iných krajinách</strong></p>
+                            <p>Vo svete bolo zdokumentovaných viac ako 60 prípadov pokusu o&nbsp;sabotáž vystúpení Shen Yun, ktoré sú spojené s&nbsp;ČKS. Od hackovania ich webstránok, cez prerezanie pneumatík; no&nbsp;najčastejšie sú prípady, keď konzuláty a&nbsp;ambasády píšu listy a&nbsp;navštevujú divadlá, kde sa ich snažia prinútiť, aby zrušili predstavenie.</p>
+                            <p>Na Slovensku minulý rok nové SND zrušilo rezervovaný termín pre vystúpenie Shen Yun, s&nbsp;odvolaním sa na technické príčiny. Požiadavky na iný voľný termín zostali a&nbsp;doteraz zostávajú bez odozvy a&nbsp;kompetentní odmietajú podať bližšie vysvetlenie.</p>
+                            <p>Vo väčšine krajín sa pokusy o&nbsp;sabotáž ukázali ako márne. Riaditeľom divadiel a&nbsp;vládnym predstaviteľom v&nbsp;Severnej Amerike, Európe a&nbsp;Austrálii sa zdá takýto pokus o&nbsp;cenzúru neprístojný, dokonca smiešny. Nevieme, či bola rezervácia zrušená z&nbsp;dôvodu nátlaku zo strany čínskej ambasády, avšak mnohé skúsenosti z&nbsp;iných krajín tomu napovedajú.</p>
+                            <p>Pokusy o&nbsp;cenzúru v&nbsp;kultúrnych inštitúciách na Slovensku považujeme za neprijateľné, najmä ak sú vedené komunistickým režimom so smutne známou históriou.</p>
+                            <p>Shen Yun prináša klasické a ušľachtilé hodnoty, ktoré sú oceňované a&nbsp;vážené ľuďmi vo svete a&nbsp;prinášajú potešenie, nádej a&nbsp;inšpiráciu svojmu publiku.</p>
+                            <p><strong>Pripájame sa preto ku otvorenému listu za pozvanie súboru Shen Yun na Slovensko. </strong></p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="sgnature-listing-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h3 class="section-heading heading-no-top-margin">K otvorenému listu sa pridali</h3>
+                        <div class="h-line"></div>
+                    </div>
+                </div>
+                <div class="row" id="signatures_cards">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="sign-card">
+                            <div class="thumb-photo">
+                                <img src="http://placehold.it/250x250" class="img-responsive" alt="signer-photo">
+                            </div>
+                            <div class="signers-info">
+                                <h5>Jane Doe</h5>
+                                <p class="date-time">02-17-2017 at 4:46 PM	<span class="pull-right">#8691</span></p>
+                                <p class="message">Etiam sed tortor augue. Aliquam erat volutpat. Etiam malesuada gravida hendrerit facilisis auctor.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="sign-card">
+                            <div class="thumb-photo">
+                                <img src="http://placehold.it/250x250" class="img-responsive" alt="signer-photo">
+                            </div>
+                            <div class="signers-info">
+                                <h5>Jane Doe</h5>
+                                <p class="date-time">02-17-2017 at 4:46 PM	<span class="pull-right">#8691</span></p>
+                                <p class="message">Etiam sed tortor augue. Aliquam erat volutpat. Etiam malesuada gravida hendrerit facilisis auctor.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="sign-card">
+                            <div class="thumb-photo">
+                                <img src="http://placehold.it/250x250" class="img-responsive" alt="signer-photo">
+                            </div>
+                            <div class="signers-info">
+                                <h5>Jane Doe</h5>
+                                <p class="date-time">02-17-2017 at 4:46 PM	<span class="pull-right">#8691</span></p>
+                                <p class="message">Etiam sed tortor augue. Aliquam erat volutpat. Etiam malesuada gravida hendrerit facilisis auctor.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+        </div>
+-->
+        <div class="sign-this-petition" id="sign-this-letter"></div>
+        <script src="/dist/bundle.js"></script>
+
+
+        <div class="">
+            <div class="container">
+                <div class="row list-header">
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="section-heading">Zoznam všetkých podpisov</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Opinion</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>#8691</td>
+                                <td><img src="http://placehold.it/250x250" alt="reporter-photo">Jane Doe</td>
+                                <td>Etiam sed tortor augue. Aliquam erat volutpat. Etiam malesuada ...</td>
+                                <td>Signed on 02-17-2017 at 4:46 PM</td>
+                            </tr>
+                            <tr>
+                                <td>#8691</td>
+                                <td><img src="http://placehold.it/250x250" alt="reporter-photo">Jane Doe</td>
+                                <td>Etiam sed tortor augue. Aliquam erat volutpat. Etiam malesuada ...</td>
+                                <td>Signed on 02-17-2017 at 4:46 PM</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+<!--
+<footer id="footer">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="footer-single footer-about">
+                    <h2 class="title footer-logo">aaa</h2>
+                    <p>
+                        Eleifend tempus eros pellentesque vehicula. Aliquam turpis justo,mattis id neque et,
+                        semper lacinia purus. Vivamus dapibus tellus blandit efficitur justo lacinia eu.
+                        Praesent at nibh sit amet risus dictum nec eu quam. Fusce nec nisi dui.
+                    </p>
+                    <ul class="list-unstyled social-area">
+                        <li><a href="#" class="facebook"><i class="fa fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="envelop"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <p>&#xA9; 2018 Copyright <span>SAFG</span></p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h4 class="stay_connected_title">Stay Connected</h4>
+                <div class="subscribe-form">
+                    <form class="subscribe-form-action" action="#">
+                        <div class="form-group subscribe-input">
+                            <input name="subscribe" id="subscribe" class="form-control cbx-input form-control" required="required" placeholder="Email Address" type="email">
+                        </div>
+                        <div class="form-group subscribe-btn">
+                            <button class="btn" name="subscribe-submit" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+                <p>
+                    Vivamus dapibus tellus blandit efficitur justo lacinia eu.
+                    Praesent at nibh sit amet risus dictum nec eu quam. Fusce nec nisi dui.
+                </p>
+
+            </div> 
+        </div> 
+    </div> 
+</footer> 
+-->
+
+    </body>
 
 </html>

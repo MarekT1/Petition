@@ -233,107 +233,137 @@ export class SignatureForm extends React.Component {
     }
     render() {
         return (
-            <div>
-                <div className="content-container">
-                    <div className="input-group">
-                        <div className="input-group__item">
-                            <input 
-                                type="text"
-                                placeholder="Meno"
-                                autoFocus
-                                className = {
-                                    !this.state.errors.firstName.blurred  ||
-                                    this.state.errors.firstName.valid 
-                                     ? "text-input": "text-input-error"
-                                }
-                                value={this.state.firstName}
-                                onBlur={this.onFirstNameBlur}
-                                onChange={this.onFirstNameChange}
-                            />
-                            <input 
-                                type="text"
-                                placeholder="Priezvisko"
-                                className = {
-                                    !this.state.errors.lastName.blurred  ||
-                                    this.state.errors.lastName.valid 
-                                     ? "text-input": "text-input-error"
-                                }
-                                value={this.state.lastName}
-                                onBlur={this.onLastNameBlur}
-                                onChange={this.onLastNameChange}
-                            />
-                            <input 
-                                type="text"
-                                placeholder="Profesia"
-                                className="text-input"
-                                value={this.state.profession}
-                                onChange={this.onProfessionChange}
-                            />
-                            <input 
-                                type="text"
-                                placeholder="email"
-                                className = {
-                                    !this.state.errors.email.blurred  ||
-                                    this.state.errors.email.valid 
-                                     ? "text-input": "text-input-error"
-                                }
-                                value={this.state.email}
-                                onBlur={this.onEmailBlur}
-                                onChange={this.onEmailChange}
-                            />
-                            <input 
-                                type="text"
-                                placeholder={this.state.captcha}
-                                className = {
-                                    !this.state.errors.captcha.blurred  ||
-                                    this.state.errors.captcha.valid 
-                                     ? "text-input": "text-input-error"
-                                }
-                                value={this.state.captchaAnswer}
-                                onBlur={this.onCaptchaBlur}
-                                onChange={this.onCaptchaChange}
-                            />
-                    </div>
-                        <label
-                            className = {
-                                !this.state.errors.agreeGDPRChecked.blurred  ||
-                                this.state.agreeGDPRChecked 
-                                ? "label-input": "label-input-error"
-                            }                      
-                        >
-                            <input type="checkbox"
-                            checked={this.state.agreeGDPRChecked}
-                            onChange={this.toggleGDPRChange}
-                            />
-                        Suhlas aaa
-                        </label>                        
-                        <label>
-                        <input type="checkbox"
-                            checked={this.state.agreeSubscribeChecked}
-                            onChange={this.toggleSubscribeChange}
-                            />
-                        Chcem
-                        </label> 
-                        <div>
-                            <button 
-                                id="saveSignature"
-                                className="button" 
-                                onClick={this.onSubmitClick}
-                            >
-                                Button
-                            </button>
+            <div className="row">
+                <div className="col-xs-12 col-md-10 col-md-offset-1">
+                    <div className="signature-form">
+                        <div className="row">
+                            <label className="sr-only">First Name</label>
+                            <div className="col-md-6">
+                                <div className="form-group is-empty">
+                                    <input 
+                                        type="text"
+                                        placeholder="Meno"
+                                        className = {
+                                            !this.state.errors.firstName.blurred  ||
+                                            this.state.errors.firstName.valid 
+                                            ? this.state.errors.firstName.blurred ? "form-control ok": "form-control" : "form-control error"
+                                        }
+                                        value={this.state.firstName}
+                                        onBlur={this.onFirstNameBlur}
+                                        onChange={this.onFirstNameChange}
+                                    />
+                                </div>
+                            </div>
+
+                            
+                            <label className="sr-only" >Last Name</label>
+                            <div className="col-md-6">
+                                <div className="form-group is-empty">
+                                    <input 
+                                        type="text"
+                                        placeholder="Priezvisko"
+                                        className = {
+                                            !this.state.errors.lastName.blurred  ||
+                                            this.state.errors.lastName.valid 
+                                            ? this.state.errors.lastName.blurred ? "form-control ok": "form-control" : "form-control error"
+                                        }
+                                        value={this.state.lastName}
+                                        onBlur={this.onLastNameBlur}
+                                        onChange={this.onLastNameChange}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="col-md-6">
+                                <div className="form-group is-empty">
+                                    <input 
+                                        type="text"
+                                        placeholder="Profesia"
+                                        className="form-control"
+                                        value={this.state.profession}
+                                        onChange={this.onProfessionChange}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <div className="form-group is-empty">
+                                    <input 
+                                        type="text"
+                                        placeholder="email"
+                                        className = {
+                                            !this.state.errors.email.blurred  ||
+                                            this.state.errors.email.valid 
+                                            ? "form-control": "form-control error"
+                                        }
+                                        value={this.state.email}
+                                        onBlur={this.onEmailBlur}
+                                        onChange={this.onEmailChange}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <div className="form-group is-empty">                                        
+                                    <input 
+                                        type="text"
+                                        placeholder={this.state.captcha}
+                                        className = {
+                                            !this.state.errors.captcha.blurred  ||
+                                            this.state.errors.captcha.valid 
+                                            ? this.state.errors.captcha.blurred ? "form-control ok": "form-control" : "form-control error"
+                                        }
+                                        value={this.state.captchaAnswer}
+                                        onBlur={this.onCaptchaBlur}
+                                        onChange={this.onCaptchaChange}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <label
+                                    className = {
+                                        !this.state.errors.agreeGDPRChecked.blurred  ||
+                                        this.state.agreeGDPRChecked 
+                                        ? "label-input": "label-input-error"
+                                    }                      
+                                >
+                                    <input type="checkbox"
+                                        checked={this.state.agreeGDPRChecked}
+                                        onChange={this.toggleGDPRChange}
+                                    />
+                                    Suhlas aaa
+                                </label>
+                            </div>
+
+                            <div className="col-md-6">                        
+                                <label>
+                                    <input type="checkbox"
+                                        checked={this.state.agreeSubscribeChecked}
+                                        onChange={this.toggleSubscribeChange}
+                                    />
+                                        Chcem asdfj asdf lsdfj askdf asldfasldk fskd fsdkflsdjf
+                                </label> 
+                            </div>
+                            <p className="text-center">
+                                <button 
+                                    id="saveSignature"
+                                    className="btn btn-brand btn-cta" 
+                                    onClick={this.onSubmitClick}
+                                >
+                                    Button
+                                </button>
+                            </p>
                             <ToolTip active={this.state.isTooltipActive} position="right" parent="#saveSignature">
                                 <div className={this.state.stateStatus === false ? "signature-message-err":"signature-message-ok"}>
                                     <p>{this.state.stateStatus}</p>
                                     <p>{this.state.stateMessage}</p>
                                 </div>
-                            </ToolTip>                            
-                        </div>        
-        
+                            </ToolTip> 
+                        </div>
                     </div>
                 </div>
             </div>
-
         );
     }
 }

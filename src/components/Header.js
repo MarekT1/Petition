@@ -2,16 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-export default () => (
-    <header className="header">
-        <div className="content-container">
-            <div className="header__content">
-                <Link className="header__title" to="/dashboard">
-                    <h1>aa</h1>
-                </Link>
+export default (props) => (
+    props.type === "petition" ?
+        <div className="row">
+            <div className="col-xs-12 text-center">
+                <h3 className="section-heading heading-no-top-margin">{props.heading}</h3>
+                <div className="h-line"></div>
             </div>
         </div>
-    </header>
+    :
+        <div class="row list-header">
+            <div class="col-xs-12 col-md-6">
+                <h3 class="section-heading">{props.heading}</h3>
+            </div>
+        </div>    
 )
 
 

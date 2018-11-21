@@ -30,10 +30,19 @@ export default class MainPage extends React.Component {
     render() {
         return (
             <div>
-                <Header/>
-                <SignatureForm stateHandler={this.stateHandler}/>
-                <SignatureList signatures={this.state.signatures}/>
-            </div>            
+                <div className="light-shade">
+                    <div className="container">
+                        <Header type="petition" heading="Nadpis 1"/>
+                        <SignatureForm stateHandler={this.stateHandler}/>
+                    </div>
+                </div>
+                <div className="signature-list-table-area">
+                    <div className="container">            
+                        <Header type="list-of-signatures" heading="Zoznam všetkých podpisov"/>
+                        {false && <SignatureList signatures={this.state.signatures}/>}
+                    </div>
+                </div>
+            </div>
         )
     }
 
