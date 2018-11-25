@@ -1045,6 +1045,10 @@ main.content {
   font-size: 1.4rem;
   line-height: 2.0999999999999996rem;
 }
+.label-input {
+  color: #666;
+  font-weight: 400;
+}
 .label-input-error {
   color: #e74c3c;
 }
@@ -1572,6 +1576,21 @@ form.petition-form {
 .petition-entry-details .banner-filled.form-group input[type="file"] + label + a.banner-delete:active {
   text-decoration: none;
 }
+.form-control::-moz-placeholder,
+.form-group .form-control::-moz-placeholder {
+  color: #666;
+  font-weight: 400;
+}
+.form-control:-ms-input-placeholder,
+.form-group .form-control:-ms-input-placeholder {
+  color: #666;
+  font-weight: 400;
+}
+.form-control::-webkit-input-placeholder,
+.form-group .form-control::-webkit-input-placeholder {
+  color: #666;
+  font-weight: 400;
+}
 .single-petition {
   background-color: #fff;
   padding-top: 6rem;
@@ -1588,6 +1607,9 @@ form.petition-form {
   line-height: 24px;
   font-size: 1.6rem;
   line-height: 2.4000000000000004rem;
+}
+.single-petition .letter-button-bellow {
+  padding-top: 6rem;
 }
 .single-petition .meta-info {
   display: flex;
@@ -1737,7 +1759,7 @@ form.petition-form {
 }
 .sgnature-listing-area {
   background-color: #fff;
-  padding-top: 6rem;
+  padding-top: 2rem;
   padding-bottom: 6rem;
 }
 .sgnature-listing-area #signatures_cards {

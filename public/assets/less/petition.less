@@ -307,7 +307,21 @@ form.petition-form {
   }
 }
 
-
+.form-control::-moz-placeholder,
+.form-group .form-control::-moz-placeholder {
+  color: #666;
+  font-weight: 400;
+}
+.form-control:-ms-input-placeholder,
+.form-group .form-control:-ms-input-placeholder {
+  color: #666;
+  font-weight: 400;
+}
+.form-control::-webkit-input-placeholder,
+.form-group .form-control::-webkit-input-placeholder {
+  color: #666;
+  font-weight: 400;
+}
 
 .single-petition {
   background-color: @white;
@@ -318,6 +332,9 @@ form.petition-form {
   }
   p.small {
     .font-size(16);
+  }
+  .letter-button-bellow {
+    padding-top: 6rem;
   }
 
   .meta-info {
@@ -480,7 +497,7 @@ form.petition-form {
 
 .sgnature-listing-area {
   background-color: @white;
-  padding-top: 6rem;
+  padding-top: 2rem;
   padding-bottom: 6rem;
 
   #signatures_cards{

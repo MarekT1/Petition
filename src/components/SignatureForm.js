@@ -337,7 +337,7 @@ export class SignatureForm extends React.Component {
                             </div>
 
                             <div className="col-md-6">                        
-                                <label>
+                                <label className="label-input">
                                     <input type="checkbox"
                                         checked={this.state.agreeSubscribeChecked}
                                         onChange={this.toggleSubscribeChange}

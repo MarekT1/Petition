@@ -12,7 +12,7 @@ export default (props) => (
         </div>
     :
         <div className="row list-header">
-            <div className="col-xs-12">
+            <div className="col-xs-12 ">
                 <h3 className="section-heading">{props.heading}</h3>
             </div>
         </div>    
