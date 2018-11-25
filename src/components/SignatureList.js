@@ -15,28 +15,16 @@ export class SignatureList extends React.Component {
             <div className="row">
                 <div className="col-xs-12">
                     <p>Spolu podpisov: {this.props.signatures.length}</p>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Meno</th>
-                                <th>Povolanie</th>
-                            </tr>
-                        </thead>
-                        <tbody>
                         
                             
                             {this.props.signatures.map(signature => {
                                 return (
-                                    <tr key={signature.user_id}>
-                                        <td>{signature.user_id} </td>
-                                        <td>{signature.firstName} {signature.lastName}</td>
-                                        <td>{signature.profession}</td>
-                                    </tr>
+                                    <div className="col-xs-4" key={signature.user_id}>
+                                        <p>{signature.firstName} {signature.lastName}, {signature.profession}</p>
+                                    </div>
                                 )
                             })}
-                        </tbody>
-                    </table>
+
                 </div>
             </div>
         )

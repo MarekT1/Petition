@@ -32,7 +32,7 @@ Last Update: 23.08.2017
 /* importing mixing and variables */
 /* rules for body contents */
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-size: 1.6rem;
@@ -52,15 +52,17 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
 }
 h1,
 .h1 {
-  font-size: 60px;
-  line-height: 90px;
-  font-size: 6rem;
-  line-height: 9rem;
+  font-size: 43px;
+  line-height: 64.5px;
+  font-size: 4.3rem;
+  line-height: 6.449999999999999rem;
   font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
 }
 h1 a,
 .h1 a {
@@ -69,10 +71,10 @@ h1 a,
 }
 h2,
 .h2 {
-  font-size: 50px;
-  line-height: 75px;
-  font-size: 5rem;
-  line-height: 7.5rem;
+  font-size: 40px;
+  line-height: 60px;
+  font-size: 4rem;
+  line-height: 6rem;
   font-weight: 700;
 }
 h2 a,
@@ -107,6 +109,9 @@ h4,
   font-size: 3rem;
   line-height: 4.5rem;
   font-weight: 400;
+  font-style: italic;
+  margin-top: 0px;
+  font-weight: bold;
 }
 h4 a,
 .h4 a {
@@ -120,6 +125,7 @@ h5,
   font-size: 2.4rem;
   line-height: 3.5999999999999996rem;
   font-weight: 400;
+  font-weight: bold;
 }
 h5 a,
 .h5 a {
@@ -136,7 +142,7 @@ h5 a:focus,
   text-decoration: none;
 }
 h5.title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   margin-bottom: 8px;
 }
 h5.title a {
@@ -163,20 +169,24 @@ h6 a,
 p,
 ul,
 ol {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-size: 1.6rem;
-  line-height: 2.4000000000000004rem;
+  font-family: 'Playfair Display', sans-serif;
+  font-size: 19px;
+  line-height: 28.5px;
+  font-size: 1.9rem;
+  line-height: 2.8499999999999996rem;
   color: #666;
 }
 p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 a,
 a:hover,
 a:focus {
   color: #ef8b80;
+}
+.letter-quote {
+  font-style: italic;
+  color: #f5740a;
 }
 .btn:not(.btn-raised):not(.btn-link),
 .btn:not(.btn-raised):not(.btn-link),
@@ -187,7 +197,7 @@ a:focus {
 .input-group-btn .btn.btn-brand:not(.btn-raised):not(.btn-link),
 .input-group-btn .btn.btn-brand:not(.btn-raised):not(.btn-link) {
   background-color: transparent;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
   color: #e74c3c;
@@ -280,6 +290,8 @@ a:focus {
 .input-group-btn .btn.btn-cta:not(.btn-raised):not(.btn-link),
 .input-group-btn .btn.btn-cta:not(.btn-raised):not(.btn-link) {
   color: #fff;
+  margin-left: 20px;
+  margin-bottom: 5px;
   border: 1px solid #e74c3c;
   padding: 15px 30px !important;
   background: rgba(231, 76, 60, 0.9);
@@ -999,7 +1011,7 @@ main.content {
 }
 .form-group .form-control {
   background: transparent;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   border: 1px solid #e74c3c;
   height: auto;
   border-radius: 25px;
@@ -1563,7 +1575,7 @@ form.petition-form {
 .single-petition {
   background-color: #fff;
   padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-bottom: 0rem;
 }
 .single-petition .petition-info {
   font-size: 18px;
