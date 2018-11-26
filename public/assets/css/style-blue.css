@@ -141,16 +141,17 @@ h5 a:focus,
 .h5 a:focus {
   text-decoration: none;
 }
-h5.title {
+h4.footer-title {
   font-family: 'Playfair Display', sans-serif;
   margin-bottom: 8px;
+  font-style: normal;
 }
-h5.title a {
+h4.footer-title a {
   color: #333;
 }
-h5.title a:hover,
-h5.title a:active,
-h5.title a:focus {
+h4.footer-title a:hover,
+h4.footer-title a:active,
+h4.footer-title a:focus {
   text-decoration: none;
 }
 h6,
@@ -1379,6 +1380,9 @@ form.petition-form {
   }
 }
 */
+.signature-top-padding {
+  padding-top: 30px;
+}
 .signature-list-petition-header {
   background-image: url("../img/create-petition-header-bg.jpg");
 }
@@ -1963,9 +1967,6 @@ footer#footer .footer-logo {
 }
 footer#footer .footer-logo img {
   filter: brightness(800%);
-}
-footer#footer .stay_connected_title {
-  margin-top: 0px;
 }
 footer#footer .subscribe-form .subscribe-form-action {
   width: 100%;

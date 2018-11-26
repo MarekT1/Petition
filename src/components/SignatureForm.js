@@ -332,8 +332,7 @@ export class SignatureForm extends React.Component {
                                     <input type="checkbox"
                                         checked={this.state.agreeGDPRChecked}
                                         onChange={this.toggleGDPRChange}
-                                    />
-                                    Súhlasím so Zásadami ochrany osobných údajov. <ModalDialog />
+                                    />&nbsp;Súhlasím so <ModalDialog linkedText="Zásadami ochrany osobných údajov"/>.
                                 </label>
                             </div>
 
@@ -342,19 +341,20 @@ export class SignatureForm extends React.Component {
                                     <input type="checkbox"
                                         checked={this.state.agreeSubscribeChecked}
                                         onChange={this.toggleSubscribeChange}
-                                    />
-                                        Chcem byť informovaný o ďalšom postupe ohľadom tohto listu.
+                                    />&nbsp;Chcem byť informovaný o ďalšom postupe ohľadom tohto listu.
                                 </label> 
                             </div>
-                            <p className="text-center">
-                                <button 
-                                    id="saveSignature"
-                                    className="btn btn-brand btn-cta" 
-                                    onClick={this.onSubmitClick}
-                                >
-                                    Podpísať otvorený list
-                                </button>
-                            </p>
+                            <div className="col-xs-12 signature-top-padding">
+                                <p className="text-center">
+                                    <button 
+                                        id="saveSignature"
+                                        className="btn btn-brand btn-cta" 
+                                        onClick={this.onSubmitClick}
+                                    >
+                                        Podpísať otvorený list
+                                    </button>
+                                </p>
+                            </div>
                             <ToolTip active={this.state.isTooltipActive} position="right" parent="#saveSignature">
                                 <div className={this.state.stateStatus === false ? "signature-message-err":"signature-message-ok"}>
                                     <p>{this.state.stateStatus}</p>
