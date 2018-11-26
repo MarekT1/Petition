@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setUpdatedState } from '../actions/names'
 import axios from 'axios'
 import ToolTip from 'react-portal-tooltip'
+import ModalDialog from './ModalDialog'
 
 const NUMBER_A_MAX = 50;
 const NUMBER_B_MAX = 10;
@@ -332,7 +333,7 @@ export class SignatureForm extends React.Component {
                                         checked={this.state.agreeGDPRChecked}
                                         onChange={this.toggleGDPRChange}
                                     />
-                                    Súhlasím so Zásadami ochrany osobných údajov. 
+                                    Súhlasím so Zásadami ochrany osobných údajov. <ModalDialog />
                                 </label>
                             </div>
 
