@@ -177,7 +177,7 @@ ol {
   line-height: 2.8499999999999996rem;
   color: #666;
 }
-p {
+.petition-info p {
   margin-bottom: 20px;
 }
 a,
@@ -1808,6 +1808,7 @@ form.petition-form {
   line-height: 21px;
   font-size: 1.4rem;
   line-height: 2.0999999999999996rem;
+  margin-bottom: -2px;
 }
 .sgnature-listing-area a.btn.btn-brand {
   margin-top: 3rem;

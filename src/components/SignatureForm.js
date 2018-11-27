@@ -323,16 +323,16 @@ export class SignatureForm extends React.Component {
                             
                             <div className="col-md-6">
                                 <label
-                                    className = {
-                                        !this.state.errors.agreeGDPRChecked.blurred  ||
-                                        this.state.agreeGDPRChecked 
-                                        ? "label-input": "label-input-error"
-                                    }                      
+                                    className = "label-input"                      
                                 >
                                     <input type="checkbox"
                                         checked={this.state.agreeGDPRChecked}
                                         onChange={this.toggleGDPRChange}
-                                    />&nbsp;Súhlasím so <ModalDialog linkedText="Zásadami ochrany osobných údajov"/>.
+                                    />&nbsp;<span className={
+                                        !this.state.errors.agreeGDPRChecked.blurred  ||
+                                        this.state.agreeGDPRChecked 
+                                        ? "label-input": "label-input-error"
+                                    }>Súhlasím</span> so <ModalDialog linkedText="zásadami ochrany osobných údajov"/>.
                                 </label>
                             </div>
 
