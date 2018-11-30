@@ -40,7 +40,7 @@ export default class ModalDialog extends React.Component {
               <p>Slovenská Asociácia Falun Gong &nbsp;(ďalej Prevádzkovateľ) spracúva osobné údaje v súlade s GDPR – Nariadenie Európskeho parlamentu Rady EÚ 2016/679 (ďalej len Nariadenie) a zákonom č. 18/2018 o ochrane osobných údajov (ďalej len Zákon) s platnosťou od 25.5.2018 a Všeobecnými podmienkami MMM.</p>
               <p><strong>1. Identifikačné údaje prevádzkovateľa a zodpovednej osoby</strong></p>
               <p>Prevádzkovateľom osobných údajov Slovenská Asociácia Falun Gong, Šuňavcova 5, 831 02 Bratislava&nbsp;(ďalej aj „SAFG“), ktorá spracúva osobné údaje za podmienok uvedených nižšie.</p>
-              <p>Ohľadom záležitostí Vašich podnetov ohľadom osobných údajov nás môžete kontaktovať písomne na adrese nášho sídla alebo emailom <a href="mailto:gdpr@falungong.sk">gdpr@falungong.sk</a></p>
+              <p>Ohľadom záležitostí Vašich podnetov ohľadom osobných údajov nás môžete kontaktovať písomne na adrese nášho sídla alebo emailom <a href="mailto:gdpr@vazimesikulturu.sk">gdpr@vazimesikulturu.sk</a></p>
               <p><strong>2. Osobné údaje, ktoré spracúvame</strong></p>
               <p> Meno, priezvisko, email</p>
               <p><strong>3. Získavanie osobných údajov</strong></p>
@@ -71,7 +71,7 @@ export default class ModalDialog extends React.Component {
               <p>Stačí nás kontaktovať:</p>
               <ol start="1">
                 <li>&nbsp;písomne zaslaním listu na adresu sídla SAFG s uvedením mena a priezviska dotknutej osoby</li>
-                <li>elektronicky zaslaním e-mailu na vyššie uvedenú e-mailovú adresu <a href="mailto:gdpr@falungong.sk">gdpr@falungong.sk</a></li>
+                <li>elektronicky zaslaním e-mailu na vyššie uvedenú e-mailovú adresu <a href="mailto:gdpr@vazimesikulturu.sk">gdpr@vazimesikulturu.sk</a></li>
               </ol>
               <p><strong>8.&nbsp;&nbsp; &nbsp;Práva dotknutej osoby</strong></p>
               <p>Dotknutá osoba má právo podať návrh na začatie konania na Úrad na ochranu osobných údajov Slovenskej republiky, ak sa domnieva, že je priamo dotknutá na svojich právach ustanovených Nariadením GDPR alebo príslušnými právnymi predpismi.</p>

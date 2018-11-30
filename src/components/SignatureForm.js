@@ -178,7 +178,7 @@ export class SignatureForm extends React.Component {
             this.state.errors.captcha.blurred === true &&
             this.state.errors.captcha.valid === true
         ) { 
-            axios.post(`https://www.9komentarov.sk/list/api/put.php`, { 
+            axios.post(`https://www.vazimesikulturu.sk/api/put.php`, { 
                 firstName: this.state.firstName, 
                 lastName: this.state.lastName, 
                 profession: this.state.profession, 

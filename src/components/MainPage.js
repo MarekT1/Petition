@@ -14,7 +14,7 @@ export default class MainPage extends React.Component {
         }
     }
     getDataFromExternalAPI = () => {
-        axios.post(`https://www.9komentarov.sk/list/api/get.php`)
+        axios.post(`https://www.vazimesikulturu.sk/api/get.php`)
         .then(res => {
             console.log("retrieved users=", res.data);
             const signatures = res.data
