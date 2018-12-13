@@ -5,3 +5,4 @@ export const setUpdatedState = (text = '') => ({
 })
 
 // I suggest to keep this file for the future
+// this file is completely unnecessary -- NO, keep it.
