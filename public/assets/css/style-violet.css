@@ -147,11 +147,17 @@ h4.footer-title {
   font-style: normal;
 }
 h4.footer-title a {
-  color: #333;
+  color: #fff;
 }
 h4.footer-title a:hover,
 h4.footer-title a:active,
 h4.footer-title a:focus {
+  text-decoration: none;
+}
+a.footer-link {
+  color: #fff;
+}
+a.footer-link:hover {
   text-decoration: none;
 }
 h6,
